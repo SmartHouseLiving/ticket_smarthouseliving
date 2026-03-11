@@ -51,6 +51,18 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
+                    @php
+                        $field = env('TICKETING_NAV_FIELD', 'email');
+                        $allowed = array_map('trim', explode(',', env('TICKETING_NAV_ALLOWED', '')));
+                        $isAdmin = in_array(auth()->user()->{$field}, $allowed);
+                    @endphp
+
+                    @if ($isAdmin)
+                        <a href="/admin"
+                            class="inline-flex items-center rounded-xl border border-cyan-200 bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700 transition hover:border-cyan-300 hover:bg-cyan-100">
+                            Administração
+                        </a>
+                    @endif
                     <button type="submit"
                         class="inline-flex items-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] hover:shadow-md">
                         {{ $header?->logout_button_label ?? 'Logout' }}

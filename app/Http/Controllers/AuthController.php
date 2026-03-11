@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Header;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,12 +12,16 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
-        return view('auth.login');
+        $header = Header::where('is_active', 1)->first() ?? Header::first();
+
+        return view('auth.login', compact('header'));
     }
 
     public function showRegister()
     {
-        return view('auth.register');
+        $header = Header::where('is_active', 1)->first() ?? Header::first();
+
+        return view('auth.register', compact('header'));
     }
 
     public function register(Request $request)
@@ -25,12 +30,20 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:6', 'confirmed'],
+            'profile_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
+
+        $profilePhotoPath = null;
+
+        if ($request->hasFile('profile_photo')) {
+            $profilePhotoPath = $request->file('profile_photo')->store('profile-photos', 'public');
+        }
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_photo' => $profilePhotoPath,
         ]);
 
         Auth::login($user);
@@ -47,12 +60,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->intended('/');
         }
 
         return back()->withErrors([
             'email' => 'Credenciais inválidas',
-        ]);
+        ])->withInput();
     }
 
     public function logout(Request $request)
