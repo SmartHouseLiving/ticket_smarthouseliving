@@ -68,10 +68,6 @@
                             </p>
                         </div>
 
-                        <p class="text-xs text-slate-500">
-                            Clica na imagem para alterar
-                        </p>
-
                     </form>
 
                 </div>

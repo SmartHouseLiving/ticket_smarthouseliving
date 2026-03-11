@@ -31,7 +31,6 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-
             ->brandName('SmartHouseLiving')
             ->brandLogo(asset('storage/headers/admin_image-removebg-preview (1).png'))
             ->brandLogoHeight('3.2rem')
