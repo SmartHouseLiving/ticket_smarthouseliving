@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AccountPageController;
 use Illuminate\Support\Facades\Route;
 
 // Route::livewire('/', 'creators-ticketing.ticket-submit-form');
@@ -18,7 +19,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [HeaderController::class, 'index'])->name('tickets.front');
-    Route::view('/account', 'account.settings')->name('account.settings');
+    Route::get('/account', [AccountPageController::class, 'index'])->name('account.settings');
     Route::post('/account/password', [AccountController::class, 'updatePassword'])
     ->name('account.password.update');
 });
