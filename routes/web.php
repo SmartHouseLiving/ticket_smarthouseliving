@@ -22,4 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/account', [AccountPageController::class, 'index'])->name('account.settings');
     Route::post('/account/password', [AccountController::class, 'updatePassword'])
     ->name('account.password.update');
+    Route::post('/account/photo', [AccountController::class, 'updatePhoto'])
+    ->name('account.photo.update');
 });
