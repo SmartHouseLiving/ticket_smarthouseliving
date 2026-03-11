@@ -23,9 +23,9 @@ class HeaderForm
                 TextInput::make('header_title')
                     ->label('Header Title')
                     ->required(),
-FileUpload::make('logo')
-    ->disk('public')
-    ->directory('headers'),
+                FileUpload::make('logo')
+                   ->disk('public')
+                   ->directory('headers'),
                 TextInput::make('account_button_label')
                     ->label('Account Button Label')
                     ->required(),

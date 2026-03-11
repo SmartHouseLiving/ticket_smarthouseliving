@@ -13,10 +13,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class HeaderResource extends Resource
 {
     protected static ?string $model = Header::class;
+
+    protected static ?string $navigationLabel = 'Header';
+
+    protected static string | UnitEnum | null $navigationGroup = 'Site Settings';
+
+    protected static ?int $navigationSort = 3;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
