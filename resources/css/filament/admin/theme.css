@@ -1,0 +1,84 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source "../../../../app/Filament/**/*";
+@source "../../../../resources/views/filament/**/*";
+@source "../../../../resources/views/livewire/**/*";
+@source "../../../../app/Livewire/**/*";
+
+/* Fundo geral */
+.fi-body {
+    @apply bg-slate-100;
+}
+
+/* Sidebar */
+.fi-sidebar {
+    @apply bg-slate-950 border-r border-slate-800;
+}
+
+.fi-sidebar-nav {
+    @apply bg-transparent;
+}
+
+.fi-sidebar-item a {
+    @apply rounded-xl text-slate-300 transition;
+}
+
+.fi-sidebar-item a:hover {
+    @apply bg-slate-800 text-white;
+}
+
+.fi-sidebar-item-active a {
+    @apply bg-cyan-500/15 text-cyan-300 ring-1 ring-cyan-400/20;
+}
+
+/* Brand area */
+.fi-sidebar-header {
+    @apply bg-slate-950 border-b border-slate-800;
+}
+
+/* Topbar */
+.fi-topbar {
+    @apply bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm;
+}
+
+/* Main content wrapper */
+.fi-main {
+    @apply bg-slate-100;
+}
+
+/* Cards / sections */
+.fi-section,
+.fi-card,
+.fi-ta-ctn,
+.fi-wi-widget {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+
+/* Widget headers */
+.fi-section-header {
+    @apply border-b border-slate-100;
+}
+
+/* Tables */
+.fi-ta {
+    @apply rounded-2xl overflow-hidden;
+}
+
+.fi-ta-header-cell {
+    @apply bg-slate-50 text-slate-600;
+}
+
+/* Buttons */
+.fi-btn {
+    @apply rounded-xl;
+}
+
+/* Modal */
+.fi-modal-window {
+    @apply rounded-2xl border border-slate-200 shadow-2xl;
+}
+
+/* Login */
+.fi-simple-main {
+    @apply rounded-3xl border border-slate-200 bg-white shadow-xl;
+}
