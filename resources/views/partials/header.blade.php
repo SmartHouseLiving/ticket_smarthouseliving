@@ -24,7 +24,10 @@
 
         @auth
             <div class="flex items-center gap-3">
-                <div class="hidden items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 sm:flex">
+
+                <a href="{{ route('account.settings') }}"
+                    class="hidden sm:flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 transition hover:border-cyan-300 hover:bg-cyan-50">
+
                     @if (auth()->user()->profile_photo)
                         <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="{{ auth()->user()->name }}"
                             class="h-10 w-10 rounded-full object-cover shadow-sm">
@@ -43,11 +46,7 @@
                             {{ auth()->user()->email }}
                         </p>
                     </div>
-                </div>
 
-                <a href="{{ route('account.settings') }}"
-                    class="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-cyan-300 hover:bg-cyan-50 hover:text-slate-900">
-                    {{ $header?->account_button_label ?? 'Conta' }}
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">
@@ -57,6 +56,7 @@
                         {{ $header?->logout_button_label ?? 'Logout' }}
                     </button>
                 </form>
+
             </div>
         @endauth
 
