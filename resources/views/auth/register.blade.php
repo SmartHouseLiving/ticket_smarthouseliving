@@ -35,6 +35,16 @@
                     }
                 }">
 
+                @if ($errors->any())
+                    <div class="mb-4 rounded-lg bg-red-100 border border-red-300 text-red-700 px-4 py-3">
+                        <ul class="list-disc list-inside text-sm">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @csrf
 
                 <h2 class="mb-6 text-center text-2xl font-bold text-slate-900">
@@ -55,6 +65,7 @@
                     <input id="profile_photo" type="file" name="profile_photo" accept="image/*" class="hidden"
                         @change="updatePreview">
 
+
                     <p class="mt-3 text-xs text-slate-500">
                         Clica na imagem para escolher uma foto
                     </p>
@@ -64,24 +75,36 @@
                     <label class="mb-1 block text-sm font-medium text-slate-700">Nome</label>
                     <input type="text" name="name" required
                         class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500">
+                    @error('name')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
                     <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
                     <input type="email" name="email" required
                         class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500">
+                    @error('email')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-4">
                     <label class="mb-1 block text-sm font-medium text-slate-700">Password</label>
                     <input type="password" name="password" required
                         class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500">
+                    @error('password')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-6">
                     <label class="mb-1 block text-sm font-medium text-slate-700">Confirmar Password</label>
                     <input type="password" name="password_confirmation" required
                         class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500">
+                    @error('password_confirmation')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <button

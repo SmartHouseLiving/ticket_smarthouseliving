@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget;
 use daacreators\CreatorsTicketing\TicketingPlugin;
+use Filament\Enums\DatabaseNotificationsPosition;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -35,6 +36,8 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('storage/headers/admin_image-removebg-preview (1).png'))
             ->brandLogoHeight('3.2rem')
             ->favicon(asset('storage/headers/logo.png'))
+                    ->databaseNotifications()
+        ->databaseNotificationsPolling('30s')
 
             ->colors([
                 'primary' => Color::Cyan,
